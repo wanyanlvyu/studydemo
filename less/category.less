@@ -1,0 +1,128 @@
+@import 'base.less';
+/* body是参照html  html就参照视口 */
+html,body{
+    /* 为了让页面的高度不受子元素撑开 固定为屏幕的高度 */
+    height: 100%;
+}
+/* 顶部搜索栏 */
+
+#header {
+    background-color: #eee;
+    /* 选中公共样式类名以icon-开头 */
+    /* [class^='icon-']{
+        background-image: url(../images/sprites.png);
+        background-size: 200px 200px;
+        width: 20px;
+        height: 20px;
+        position: absolute;
+        top: 0;
+    } */
+    /* 定义一个公共样式的函数 */
+    .icon-fun {
+        background-image: url(../images/sprites.png);
+        background-size: 200px 200px;
+        /* 为了让a链接更加好点击 
+        设置a的大小大一点然后设置padding10px让内容只有20px*20px 
+        然后图片设置定位原点和裁切在内容区域显示 */
+        width: 40px;
+        height: 40px;
+        position: absolute;
+        top: 0px;
+        padding: 10px;
+        /* 改变背景图的定位的起点 */
+        background-origin: content-box;
+        /* 背景图的裁切 裁切掉除了内容以外的背景 */
+        background-clip: content-box;
+    }
+    .icon-back {
+        .icon-fun;
+        left: 0px;
+        background-position: -20px 0;
+    }
+    >form {
+        margin-left: 40px;
+        margin-right: 40px;
+        padding-top: 5px;
+        height: 40px;
+        >input {
+            width: 100%;
+            border: 1px solid #ccc;
+            height: 30px;
+            padding-left: 15px;
+            border-radius: 15px;
+        }
+    }
+    .icon-menu {
+        .icon-fun;
+        background-position: -60px 0;
+        right: 0px;
+    }
+}
+
+
+/* 主体分类 */
+
+#category {
+    .category-left {
+        position: absolute;
+        left: 0;
+        top: 40px;
+        overflow: hidden;
+        >ul {
+            >li {
+                >a {
+                    width: 90px;
+                    height: 50px;
+                    line-height: 50px;
+                    text-align: center;
+                    background-color: #eee;
+                    display: block;
+                    border-right: 1px solid #ccc;
+                    border-bottom: 1px solid #ccc;
+                    font-size: 14px;
+                }
+                &.active{
+                    >a{
+                        background-color: #fff;
+                        color:@main-color;
+                    }
+                }
+            }
+        }
+    }
+    .category-right {
+        margin-left: 90px;
+        background-color: #fff;        
+        padding: 10px;
+        overflow: hidden;
+        position: relative;
+        .banner{
+            display: block;
+            >img{
+                width: 100%;
+            }
+        }
+        .hot-category{
+            >h4{
+                font-size: 14px;
+            }
+            >ul{
+                >li{
+                    width: 33.33%;
+                    float: left;
+                    >a{
+                        text-align: center;
+                        display: block;
+                        >img{
+                            width: 50px;
+                            height: 50px;
+                        }
+                        >p{
+                            font-size: 12px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

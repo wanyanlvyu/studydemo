@@ -1,0 +1,251 @@
+/* 导入base公共样式 */
+
+@import 'base.less';
+
+/* 京东主体布局居中容器 */
+
+.container {
+    max-width: 640px;
+    margin: 0px auto;
+    background-color: #eee;
+}
+
+
+/* 顶部搜索栏 */
+
+#header {
+    /* 定位脱标 就不在继承父元素的宽度 按照内容撑开 */
+    position: fixed;
+    /* 设置宽度为100%  固定定位设置了宽度100%不会参照父元素的宽度 而是参数整个浏览器的窗口的大小*/
+    width: 100%;
+    /* 需要再次显示当前定位元素的宽度最大640 */
+    max-width: 640px;
+    z-index: 999;
+    padding-bottom: 5px;
+   /*  left: 50%;
+   transform:translate(-50%); */
+    .search-form {
+        margin-right: 60px;
+        margin-left: 10px;
+        .icon-logo {
+            background-image: url(../images/sprites.png);
+            /* 设置背景图的大小缩放一倍 */
+            background-size: 200px 200px;
+            /* 千万不能写百分比 相对当前的元素 当前元素40*40   20*20 */
+            /* background-size: 50% 50%; */
+            width: 20px;
+            height: 20px;
+            position: absolute;
+            left: 20px;
+            top: 12px;
+        }
+        .icon-search {
+            background-image: url(../images/sprites.png);
+            /* 设置背景图的大小缩放一倍 */
+            background-size: 200px 200px;
+            background-position: -80px 0;
+            /* 千万不能写百分比 相对当前的元素 当前元素40*40   20*20 */
+            /* background-size: 50% 50%; */
+            width: 20px;
+            height: 20px;
+            position: absolute;
+            left: 45px;
+            top: 12px;
+        }
+        >input {
+            width: 100%;
+            height: 30px;
+            margin-top: 5px;
+            border-radius: 15px;
+            padding-left: 60px;
+        }
+    }
+    .login {
+        position: absolute;
+        right: 0;
+        top: 0;
+        width: 60px;        
+        height: 40px;
+        line-height: 40px;
+        text-align: center;
+        color: #fff;
+    }
+}
+
+/* 轮播图区域 */
+#slide{
+	/* 给div添加隐藏溢出 */
+	overflow: hidden;
+	position: relative;
+	ul{
+		/* ul的宽度是10倍的容器的宽度 1000% */
+		width: 1000%;
+		/* -10%相对的是ul自身 */
+		transform:translateX(-10%);
+		/* 参数父元素 width 百分比 left 百分比 margin-left是子元素
+		参照自身 translateX 百分比 border-radius百分比自身  background-size百分比也是自身  */
+		>li{
+			float: left;
+			/* li的宽度是ul的1/10  == 10% */
+			width: 10%;
+			>a{
+				display: block;
+				width: 100%;
+				>img{
+					width: 100%;
+				}
+			}
+		}
+	}
+	ol{
+		position: absolute;
+		bottom: 10px;
+		left:50%;
+		transform:translateX(-50%);
+		li{
+			float: left;
+			margin-left: 10px;
+			width: 6px;
+			height: 6px;
+			border:1px solid #fff;
+			border-radius:50%;
+			&.active{
+				background-color: #fff;
+			}
+		}
+	}
+}
+
+/* 导航菜单样式 */
+#nav{
+	background-color: #fff;
+	>ul{
+		>li{
+			float: left;
+			width: 25%;
+			>a{
+				margin: 5px 0;
+				display: block;
+				text-align: center;
+				>img{
+					width: 40px;
+					height: 40px
+				}
+				>p{
+					font-size: 14px;
+				}
+			}
+		}
+	}
+}
+
+/* 产品区域 */
+#products{
+	/* 秒杀商品 */
+	padding: 5px;
+	.seckill{
+		background-color: #fff;
+		box-shadow: 0px 0px 1px #666;
+		margin-top: 20px;
+		.seckill-title{
+			padding-top: 5px;
+			line-height: 30px;		
+			.seckill-icon-clock{
+				background-image: url(../images/seckill-icon.png);
+				background-size: 20px 25px;
+				width: 20px;
+				height: 25px;
+				float: left;
+				margin-left: 5px;
+			}
+			.seckill-name{
+				float: left;
+				font-size: 14px;
+				margin-left: 5px;
+				color:@main-color;
+			}
+			.seckill-count-down{
+				float: left;
+				margin-left: 5px;
+				>span{
+					font-size: 14px;
+					padding:0px 3px;
+					background-color: #000;
+					color:#fff;
+					&:nth-of-type(3n){
+						background-color: #fff;
+						color:#000;
+					}
+				}				
+			}
+			.seckill-more{
+				float: right;
+				margin-right: 5px;
+				font-size: 14px;
+			}
+		}
+		.seckill-body{
+			padding-top: 10px;
+			>ul{
+				>li{
+					float: left;
+					width:(100%/3);
+					>a{
+						display: block;
+						text-align: center;
+						>img{
+							width: 60%;
+						}
+						>p{
+							font-size: 12px;
+							color:@main-color;
+						}
+						>del{
+							font-size: 12px;
+						}
+					}
+					&+li{
+						border-left: 1px solid #ccc;
+					}
+				}
+			}
+		}
+	}
+	/* 京东超市 */
+	.jd-market{
+		background-color: #fff;
+		margin-top: 20px;
+		box-shadow: 0px 0px 1px #666;
+		.jd-market-title{
+			>h4{
+				height: 30px;
+				line-height: 30px;
+				font-weight: normal;
+				padding-left: 30px;
+				position: relative;
+				&::before{
+					content:'';
+					position: absolute;
+					left: 20px;
+					top: 7px;
+					width: 4px;
+					height: 16px;
+					background-color: @main-color;
+				}
+			}
+			border-bottom: 1px solid #ccc;
+		}
+		.jd-market-body{
+			>div{
+				width: 50%;
+				>a{
+					display: block;
+					width: 100%;
+					>img{
+						width: 100%;
+					}
+				}
+			}
+		}
+	}
+}
